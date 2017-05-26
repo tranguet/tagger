@@ -29,7 +29,7 @@ optparser.add_option(
     help="Test set location"
 )
 optparser.add_option(
-    "-s", "--tag_scheme", default="iobes",
+    "-s", "--tag_scheme", default="iob",
     help="Tagging scheme (IOB or IOBES)"
 )
 optparser.add_option(
@@ -81,7 +81,7 @@ optparser.add_option(
     type='int', help="Use CRF (0 to disable)"
 )
 optparser.add_option(
-    "-D", "--dropout", default="0.5",
+    "-D", "--dropout", default="0.3",
     type='float', help="Droupout on the input (0 = no dropout)"
 )
 optparser.add_option(
@@ -200,11 +200,12 @@ if opts.reload:
 #
 singletons = set([word_to_id[k] for k, v
                   in dico_words_train.items() if v == 1])
-n_epochs = 100  # number of epochs over the training set
-freq_eval = 1000  # evaluate on dev every freq_eval steps
+n_epochs = 50  # number of epochs over the training set
+freq_eval = 500  # evaluate on dev every freq_eval steps
 best_dev = -np.inf
 best_test = -np.inf
 count = 0
+#trainLog = open('train.log', 'w')
 for epoch in xrange(n_epochs):
     epoch_costs = []
     print "Starting epoch %i..." % epoch
@@ -217,17 +218,35 @@ for epoch in xrange(n_epochs):
             print "%i, cost average: %f" % (i, np.mean(epoch_costs[-50:]))
         if count % freq_eval == 0:
             dev_score = evaluate(parameters, f_eval, dev_sentences,
-                                 dev_data, id_to_tag, dico_tags)
+                                 dev_data, id_to_tag, dico_tags, epoch)
             test_score = evaluate(parameters, f_eval, test_sentences,
-                                  test_data, id_to_tag, dico_tags)
+                                  test_data, id_to_tag, dico_tags, epoch)
             print "Score on dev: %.5f" % dev_score
             print "Score on test: %.5f" % test_score
             if dev_score > best_dev:
                 best_dev = dev_score
-                print "New best score on dev."
-                print "Saving model to disk..."
-                model.save()
+                best_dev_epoch = epoch
+                #print "New best score on dev at epoch %i." % best_epoch
+                #model.save()
             if test_score > best_test:
                 best_test = test_score
-                print "New best score on test."
+                best_test_epoch = epoch
+                print "Saving model to disk..."
+                model.save()
+                #print "New best score on test."
+            print "Best score on dev at epoch %i." % best_dev_epoch
+            print "Best score on test at epoch %i." % best_test_epoch
     print "Epoch %i done. Average cost: %f" % (epoch, np.mean(epoch_costs))
+
+with open('./evaluation/temp/train.log', 'w') as trainLog:
+    trainLog.write('Best score on dev at epoch: %i\n' % best_dev_epoch)
+    trainLog.write('Best score on test at epoch: %i\n\n' % best_test_epoch)
+    with open('./evaluation/temp/eval.%i.scores' % best_dev_epoch) as best_dev_res:
+        trainLog.write('Best result on dev set:\n')
+        for line in best_dev_res:
+            trainLog.write('%s' % line)
+
+    with open('./evaluation/temp/eval.%i.scores' % best_test_epoch) as best_test_res:
+        trainLog.write('\nBest result on test set:\n')
+        for line in best_test_res:
+            trainLog.write('%s' % line)

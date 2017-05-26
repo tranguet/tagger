@@ -217,7 +217,7 @@ def create_input(data, parameters, add_label, singletons=None):
 
 
 def evaluate(parameters, f_eval, raw_sentences, parsed_sentences,
-             id_to_tag, dictionary_tags):
+             id_to_tag, dictionary_tags, eval_id):
     """
     Evaluate current model using CoNLL script.
     """
@@ -245,7 +245,7 @@ def evaluate(parameters, f_eval, raw_sentences, parsed_sentences,
         predictions.append("")
 
     # Write predictions to disk and run CoNLL script externally
-    eval_id = np.random.randint(1000000, 2000000)
+    #eval_id = np.random.randint(1000000, 2000000)
     output_path = os.path.join(eval_temp, "eval.%i.output" % eval_id)
     scores_path = os.path.join(eval_temp, "eval.%i.scores" % eval_id)
     with codecs.open(output_path, 'w', 'utf8') as f:
@@ -254,9 +254,12 @@ def evaluate(parameters, f_eval, raw_sentences, parsed_sentences,
 
     # CoNLL evaluation results
     eval_lines = [l.rstrip() for l in codecs.open(scores_path, 'r', 'utf8')]
+    #trainLog = open('train.log', 'w')
     for line in eval_lines:
         print line
+        #trainLog.write("%s\n" % line)
 
+    
     # Remove temp files
     # os.remove(output_path)
     # os.remove(scores_path)

@@ -1,0 +1,15 @@
+processed 4334 tokens with 720 phrases; found: 720 phrases; correct: 645.
+accuracy:  94.30%; precision:  89.58%; recall:  89.58%; FB1:  89.58
+              ACR: precision:  96.39%; recall:  97.56%; FB1:  96.97  83
+          BATHNUM: precision:  84.62%; recall:  91.67%; FB1:  88.00  13
+             BDIR: precision: 100.00%; recall: 100.00%; FB1: 100.00  1
+           BEDNUM: precision:  91.30%; recall: 100.00%; FB1:  95.45  23
+              CTT: precision:  97.56%; recall:  96.77%; FB1:  97.17  123
+             DDIR: precision:  95.65%; recall:  91.67%; FB1:  93.62  23
+             FACE: precision: 100.00%; recall:  94.12%; FB1:  96.97  32
+             FNUM: precision:  97.62%; recall: 100.00%; FB1:  98.80  42
+             FPOS: precision:  85.71%; recall:  75.00%; FB1:  80.00  7
+              INT: precision:  98.78%; recall:  95.29%; FB1:  97.01  82
+              LOC: precision:  64.15%; recall:  64.76%; FB1:  64.45  106
+              OBJ: precision:  89.17%; recall:  89.92%; FB1:  89.54  120
+              PRC: precision:  84.62%; recall:  85.94%; FB1:  85.27  65

@@ -1,0 +1,36 @@
+Best score on dev at epoch: 33
+Best score on test at epoch: 23
+
+Best result on dev set:
+processed 4334 tokens with 720 phrases; found: 724 phrases; correct: 647.
+accuracy:  94.02%; precision:  89.36%; recall:  89.86%; FB1:  89.61
+              ACR: precision:  96.43%; recall:  98.78%; FB1:  97.59  84
+          BATHNUM: precision: 100.00%; recall:  91.67%; FB1:  95.65  11
+             BDIR: precision: 100.00%; recall: 100.00%; FB1: 100.00  1
+           BEDNUM: precision:  91.30%; recall: 100.00%; FB1:  95.45  23
+              CTT: precision:  92.80%; recall:  93.55%; FB1:  93.17  125
+             DDIR: precision:  91.67%; recall:  91.67%; FB1:  91.67  24
+             FACE: precision:  96.88%; recall:  91.18%; FB1:  93.94  32
+             FNUM: precision: 100.00%; recall: 100.00%; FB1: 100.00  41
+             FPOS: precision:  75.00%; recall:  75.00%; FB1:  75.00  8
+              INT: precision:  98.78%; recall:  95.29%; FB1:  97.01  82
+              LOC: precision:  69.16%; recall:  70.48%; FB1:  69.81  107
+              OBJ: precision:  88.89%; recall:  87.39%; FB1:  88.14  117
+              PRC: precision:  84.06%; recall:  90.62%; FB1:  87.22  69
+
+Best result on test set:
+processed 4334 tokens with 720 phrases; found: 723 phrases; correct: 652.
+accuracy:  94.85%; precision:  90.18%; recall:  90.56%; FB1:  90.37
+              ACR: precision:  96.43%; recall:  98.78%; FB1:  97.59  84
+          BATHNUM: precision:  90.91%; recall:  83.33%; FB1:  86.96  11
+             BDIR: precision: 100.00%; recall: 100.00%; FB1: 100.00  1
+           BEDNUM: precision:  91.30%; recall: 100.00%; FB1:  95.45  23
+              CTT: precision:  94.44%; recall:  95.97%; FB1:  95.20  126
+             DDIR: precision:  87.50%; recall:  87.50%; FB1:  87.50  24
+             FACE: precision:  96.88%; recall:  91.18%; FB1:  93.94  32
+             FNUM: precision:  97.62%; recall: 100.00%; FB1:  98.80  42
+             FPOS: precision:  87.50%; recall:  87.50%; FB1:  87.50  8
+              INT: precision: 100.00%; recall:  95.29%; FB1:  97.59  81
+              LOC: precision:  71.57%; recall:  69.52%; FB1:  70.53  102
+              OBJ: precision:  90.76%; recall:  90.76%; FB1:  90.76  119
+              PRC: precision:  82.86%; recall:  90.62%; FB1:  86.57  70

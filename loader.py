@@ -150,6 +150,12 @@ def prepare_dataset(sentences, word_to_id, char_to_id, tag_to_id, lower=False):
             'caps': caps,
             'tags': tags,
         })
+        #print tags
+        #print str_words
+        #print data
+        #print words
+        #print chars
+        #print caps
     return data
 
 
